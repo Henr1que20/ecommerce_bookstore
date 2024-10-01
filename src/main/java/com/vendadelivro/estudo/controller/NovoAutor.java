@@ -3,7 +3,7 @@ package com.vendadelivro.estudo.controller;
 import com.vendadelivro.estudo.dto.NovoAutorDTO;
 import com.vendadelivro.estudo.model.Autor;
 import com.vendadelivro.estudo.service.AutorService;
-import com.vendadelivro.estudo.service.exception.EmailException;
+import com.vendadelivro.estudo.exception.EmailException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

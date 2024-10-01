@@ -1,4 +1,4 @@
-package com.vendadelivro.estudo.service.exception;
+package com.vendadelivro.estudo.exception;
 
 public class EmailException extends Exception{
     public EmailException(String message) {

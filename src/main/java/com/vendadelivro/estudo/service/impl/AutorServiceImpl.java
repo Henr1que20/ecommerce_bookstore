@@ -3,7 +3,7 @@ package com.vendadelivro.estudo.service.impl;
 import com.vendadelivro.estudo.model.Autor;
 import com.vendadelivro.estudo.repo.AutorRepository;
 import com.vendadelivro.estudo.service.AutorService;
-import com.vendadelivro.estudo.service.exception.EmailException;
+import com.vendadelivro.estudo.exception.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

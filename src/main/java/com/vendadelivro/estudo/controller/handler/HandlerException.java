@@ -1,6 +1,6 @@
 package com.vendadelivro.estudo.controller.handler;
 
-import com.vendadelivro.estudo.service.exception.EmailException;
+import com.vendadelivro.estudo.exception.EmailException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
