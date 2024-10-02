@@ -3,7 +3,7 @@ package com.vendadelivro.estudo.controller;
 import com.vendadelivro.estudo.dto.NovoAutorDTO;
 import com.vendadelivro.estudo.model.Autor;
 import com.vendadelivro.estudo.service.AutorService;
-import com.vendadelivro.estudo.exception.EmailException;
+import com.vendadelivro.estudo.exception.DuplicateFieldException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class NovoAutor {
     }
 
     @PostMapping
-    public ResponseEntity<Autor> criarNovoAutor(@RequestBody @Valid NovoAutorDTO novoAutorDTO) throws EmailException {
+    public ResponseEntity<Autor> criarNovoAutor(@RequestBody @Valid NovoAutorDTO novoAutorDTO) throws DuplicateFieldException {
         Autor autor = novoAutorDTO.toModel();
         autor = service.criarNovoAutor(autor);
         //manager.persist(autor);

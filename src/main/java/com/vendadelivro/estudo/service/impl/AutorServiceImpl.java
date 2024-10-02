@@ -3,7 +3,7 @@ package com.vendadelivro.estudo.service.impl;
 import com.vendadelivro.estudo.model.Autor;
 import com.vendadelivro.estudo.repo.AutorRepository;
 import com.vendadelivro.estudo.service.AutorService;
-import com.vendadelivro.estudo.exception.EmailException;
+import com.vendadelivro.estudo.exception.DuplicateFieldException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,16 +20,15 @@ public class AutorServiceImpl implements AutorService {
     }
 
     @Override
-    public Autor criarNovoAutor(Autor autor) throws EmailException {
-        validateUniqueEmail(autor);
-        autor = autorRepositor.save(autor);
-        return autor;
+    public Autor criarNovoAutor(final Autor autor) throws DuplicateFieldException {
+        validateUniqueEmail(autor.getEmail());
+        return autorRepositor.save(autor);
     }
 
-    private void validateUniqueEmail(Autor autor) throws EmailException {
-        Optional<Autor> autor1 = autorRepositor.findByEmail(autor.getEmail());
-        if(autor1.isPresent()){
-            throw new EmailException("Email exitente, por favor use outro email para cadastro!!");
+    private void validateUniqueEmail(final String email) throws DuplicateFieldException {
+        final Optional<Autor> autor = autorRepositor.findByEmail(email);
+        if(autor.isPresent()){
+            throw new DuplicateFieldException("Email exitente, por favor use outro email para cadastro!!");
         }
     }
 }

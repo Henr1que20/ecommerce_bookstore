@@ -1,8 +1,8 @@
 package com.vendadelivro.estudo.service;
 
 import com.vendadelivro.estudo.model.Autor;
-import com.vendadelivro.estudo.exception.EmailException;
+import com.vendadelivro.estudo.exception.DuplicateFieldException;
 
 public interface AutorService {
-    Autor criarNovoAutor(Autor autor) throws EmailException;
+    Autor criarNovoAutor(final Autor autor) throws DuplicateFieldException;
 }
