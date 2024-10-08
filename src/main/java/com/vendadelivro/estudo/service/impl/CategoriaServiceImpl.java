@@ -21,14 +21,14 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public Categoria createNewCategory(final Categoria categoria) throws DuplicateFieldException {
-        validateUniqueCategoria(categoria.getNomeCategoria());
+       // validateUniqueCategoria(categoria.getNomeCategoria());
         return categoriaRepository.save(categoria);
     }
 
-    private void validateUniqueCategoria(final String nomeCategoria) throws DuplicateFieldException {
-        final Optional<Categoria> categoria = categoriaRepository.findByNomeCategoria(nomeCategoria);
-        if(categoria.isPresent()){
-            throw new DuplicateFieldException("Categoria existente, por favor cadastre outra categoria!!");
-        }
-    }
+//    private void validateUniqueCategoria(final String nomeCategoria) throws DuplicateFieldException {
+//        final Optional<Categoria> categoria = categoriaRepository.findByNomeCategoria(nomeCategoria);
+//        if(categoria.isPresent()){
+//            throw new DuplicateFieldException("Categoria existente, por favor cadastre outra categoria!!");
+//        }
+//    }
 }

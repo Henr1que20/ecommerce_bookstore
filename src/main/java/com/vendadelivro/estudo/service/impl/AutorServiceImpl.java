@@ -21,14 +21,14 @@ public class AutorServiceImpl implements AutorService {
 
     @Override
     public Autor criarNovoAutor(final Autor autor) throws DuplicateFieldException {
-        validateUniqueEmail(autor.getEmail());
+        //validateUniqueEmail(autor.getEmail());
         return autorRepositor.save(autor);
     }
 
-    private void validateUniqueEmail(final String email) throws DuplicateFieldException {
-        final Optional<Autor> autor = autorRepositor.findByEmail(email);
-        if(autor.isPresent()){
-            throw new DuplicateFieldException("Email exitente, por favor use outro email para cadastro!!");
-        }
-    }
+//    private void validateUniqueEmail(final String email) throws DuplicateFieldException {
+//        final Optional<Autor> autor = autorRepositor.findByEmail(email);
+//        if(autor.isPresent()){
+//            throw new DuplicateFieldException("Email exitente, por favor use outro email para cadastro!!");
+//        }
+//    }
 }

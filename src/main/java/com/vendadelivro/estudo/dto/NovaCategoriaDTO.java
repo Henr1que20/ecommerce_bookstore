@@ -1,11 +1,13 @@
 package com.vendadelivro.estudo.dto;
 
 import com.vendadelivro.estudo.model.Categoria;
+import com.vendadelivro.estudo.validator.UniqueValue;
 import jakarta.validation.constraints.NotBlank;
 
 public class NovaCategoriaDTO {
 
     @NotBlank
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nomeCategoria")
     private String nome;
 
     public NovaCategoriaDTO() {
