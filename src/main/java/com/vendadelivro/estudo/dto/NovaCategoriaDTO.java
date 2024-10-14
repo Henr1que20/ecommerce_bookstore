@@ -1,13 +1,13 @@
 package com.vendadelivro.estudo.dto;
 
-import com.vendadelivro.estudo.model.Categoria;
+import com.vendadelivro.estudo.model.Category;
 import com.vendadelivro.estudo.validator.UniqueValue;
 import jakarta.validation.constraints.NotBlank;
 
 public class NovaCategoriaDTO {
 
     @NotBlank
-    @UniqueValue(domainClass = Categoria.class, fieldName = "nomeCategoria")
+    @UniqueValue(domainClass = Category.class, fieldName = "nomeCategoria")
     private String nome;
 
     public NovaCategoriaDTO() {
@@ -28,8 +28,8 @@ public class NovaCategoriaDTO {
                 '}';
     }
 
-    public Categoria toModel(){
-        return new Categoria(this.nome);
+    public Category toModel(){
+        return new Category(this.nome);
     }
 
 }

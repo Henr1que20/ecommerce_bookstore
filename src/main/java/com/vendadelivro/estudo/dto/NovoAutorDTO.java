@@ -1,6 +1,6 @@
 package com.vendadelivro.estudo.dto;
 
-import com.vendadelivro.estudo.model.Autor;
+import com.vendadelivro.estudo.model.Author;
 import com.vendadelivro.estudo.validator.UniqueValue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -10,7 +10,7 @@ public class NovoAutorDTO {
     @NotBlank
     private String nome;
     @Email
-    @UniqueValue(domainClass = Autor.class, fieldName = "email")
+    @UniqueValue(domainClass = Author.class, fieldName = "email")
     private String email;
     @NotBlank
     @Size(max = 400)
@@ -58,7 +58,7 @@ public class NovoAutorDTO {
                 '}';
     }
 
-    public Autor toModel() {
-        return new Autor(this.nome, this.email, this.descricao);
+    public Author toModel() {
+        return new Author(this.nome, this.email, this.descricao);
     }
 }

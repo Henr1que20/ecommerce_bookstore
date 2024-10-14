@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_autor")
-public class Autor {
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class Autor {
     private String descricao;
     private LocalDateTime datCriacao = LocalDateTime.now();
 
-    public Autor() {
+    public Author() {
     }
 
-    public Autor(String nome, String email, String descricao) {
+    public Author(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;

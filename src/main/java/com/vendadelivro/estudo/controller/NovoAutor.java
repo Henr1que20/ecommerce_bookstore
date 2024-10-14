@@ -1,8 +1,8 @@
 package com.vendadelivro.estudo.controller;
 
 import com.vendadelivro.estudo.dto.NovoAutorDTO;
-import com.vendadelivro.estudo.model.Autor;
-import com.vendadelivro.estudo.service.AutorService;
+import com.vendadelivro.estudo.model.Author;
+import com.vendadelivro.estudo.service.AuthorService;
 import com.vendadelivro.estudo.exception.DuplicateFieldException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +20,18 @@ public class NovoAutor {
 //    @PersistenceContext
 //    private EntityManager manager;
     
-    private AutorService service;
+    private AuthorService service;
 
     @Autowired
-    public NovoAutor(AutorService service) {
+    public NovoAutor(AuthorService service) {
         this.service = service;
     }
 
     @PostMapping
-    public ResponseEntity<Autor> criarNovoAutor(@RequestBody @Valid NovoAutorDTO novoAutorDTO) throws DuplicateFieldException {
-        Autor autor = novoAutorDTO.toModel();
-        autor = service.criarNovoAutor(autor);
+    public ResponseEntity<Author> criarNovoAutor(@RequestBody @Valid NovoAutorDTO novoAutorDTO) throws DuplicateFieldException {
+        Author author = novoAutorDTO.toModel();
+        author = service.criarNovoAutor(author);
         //manager.persist(autor);
-        return ResponseEntity.ok(autor);
+        return ResponseEntity.ok(author);
     }
 }

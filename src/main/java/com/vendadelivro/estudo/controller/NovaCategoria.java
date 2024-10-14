@@ -3,8 +3,8 @@ package com.vendadelivro.estudo.controller;
 import com.vendadelivro.estudo.dto.NovaCategoriaDTO;
 import com.vendadelivro.estudo.dto.response.CategoriaResponseDTO;
 import com.vendadelivro.estudo.exception.DuplicateFieldException;
-import com.vendadelivro.estudo.model.Categoria;
-import com.vendadelivro.estudo.service.CategoriaService;
+import com.vendadelivro.estudo.model.Category;
+import com.vendadelivro.estudo.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/categorias")
 public class NovaCategoria {
 
-    private CategoriaService categoriaService;
+    private CategoryService categoryService;
 
     @Autowired
-    public NovaCategoria(CategoriaService categoriaService) {
-        this.categoriaService = categoriaService;
+    public NovaCategoria(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @PostMapping
     public ResponseEntity<CategoriaResponseDTO> createNewCategory(@RequestBody @Valid final NovaCategoriaDTO categoriaDTO)
             throws DuplicateFieldException {
-        Categoria categoria = categoriaDTO.toModel();
-        categoria = categoriaService.createNewCategory(categoria);
+        Category category = categoriaDTO.toModel();
+        category = categoryService.createNewCategory(category);
         final CategoriaResponseDTO categoriaResponseDTO =
-                new CategoriaResponseDTO(categoria.getId(), categoria.getNomeCategoria());
+                new CategoriaResponseDTO(category.getId(), category.getNomeCategoria());
         return ResponseEntity.ok().body(categoriaResponseDTO);
     }
 

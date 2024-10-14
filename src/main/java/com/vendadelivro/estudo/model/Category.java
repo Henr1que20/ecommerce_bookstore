@@ -4,20 +4,20 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_categoria")
-public class Categoria {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeCategoria;
 
-    public Categoria() {
+    public Category() {
     }
 
-    public Categoria(String nomeCategoria) {
+    public Category(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
     }
 
-    public Categoria(Long id, String nomeCategoria) {
+    public Category(Long id, String nomeCategoria) {
         this.id = id;
         this.nomeCategoria = nomeCategoria;
     }
