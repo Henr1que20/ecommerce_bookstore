@@ -1,15 +1,17 @@
 package com.vendadelivro.estudo.service.impl;
 
 import com.vendadelivro.estudo.dto.BookDTO;
-import com.vendadelivro.estudo.model.Author;
+import com.vendadelivro.estudo.dto.response.BookResponseDTO;
 import com.vendadelivro.estudo.model.Book;
-import com.vendadelivro.estudo.model.Category;
 import com.vendadelivro.estudo.repo.BookRepository;
 import com.vendadelivro.estudo.service.AuthorService;
 import com.vendadelivro.estudo.service.BookService;
 import com.vendadelivro.estudo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -35,5 +37,10 @@ public class BookServiceImpl implements BookService {
         return bookRepository.save(book);
     }
 
-
+    @Override
+    public List<BookResponseDTO> findAllBooks() {
+        var books = bookRepository.findAll();
+        List<BookResponseDTO> bookResponseDTOS = books.stream().map(book -> new BookResponseDTO(book.getId(), book.getTitulo())).collect(Collectors.toList());
+        return bookResponseDTOS;
+    }
 }
