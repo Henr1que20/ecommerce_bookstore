@@ -9,6 +9,7 @@ import com.vendadelivro.estudo.service.BookService;
 import com.vendadelivro.estudo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +29,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public Book registerNewBook(final BookDTO dto) {
         final var author = authorService.findAuthorById(dto.getAutorId());
         final var category = categoryService.findCategoryById(dto.getCategoriaId());

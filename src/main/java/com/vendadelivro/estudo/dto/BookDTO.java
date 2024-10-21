@@ -3,14 +3,12 @@ package com.vendadelivro.estudo.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vendadelivro.estudo.model.Book;
 import com.vendadelivro.estudo.validator.UniqueValue;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -23,15 +21,20 @@ public class BookDTO {
     @NotBlank
     @Size(max = 500)
     private String resumo;
+    @NotBlank
     private String sumario;
-    private double preco;
-    @Size(min = 100, message = "Numero de paginas e obrigatoria e o minimo e de 100")
+    @NotNull
+    @Min(20)
+    private BigDecimal preco;
+    @Min(100)
     private Integer numPagina;
     @NotBlank
     private String isbn;
     @Future
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime datPublication;
+
+    // interessante criar uma validação customisada para id(@ExistId)
     @NotNull
     private Long autorId;
     @NotNull
