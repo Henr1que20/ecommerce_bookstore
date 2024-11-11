@@ -2,6 +2,9 @@ package com.vendadelivro.estudo.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_categoria")
 public class Category {
@@ -9,6 +12,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeCategoria;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Book> books = new HashSet<>();
 
     public Category() {
     }
