@@ -3,9 +3,11 @@ package com.vendadelivro.estudo.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_autor")
+@Table(name = "tb_author")
 public class Author {
 
     @Id
@@ -15,6 +17,9 @@ public class Author {
     private String email;
     private String descricao;
     private LocalDateTime datCriacao = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "author")
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }

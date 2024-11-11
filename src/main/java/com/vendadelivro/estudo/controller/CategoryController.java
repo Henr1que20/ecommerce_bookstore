@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/categorias")
-public class NovaCategoria {
+public class CategoryController {
 
     private CategoryService categoryService;
 
     @Autowired
-    public NovaCategoria(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

@@ -30,9 +30,12 @@ public class Book {
     private int numPagina;
     private String isbn;
     private LocalDateTime datPublication;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
 
     public Book(String titulo, String resumo, String sumario, BigDecimal preco, int numPagina, String isbn, LocalDateTime datPublication) {

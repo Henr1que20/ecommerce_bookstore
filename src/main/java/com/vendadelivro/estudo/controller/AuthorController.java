@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/autor")
-public class NovoAutor {
+public class AuthorController {
 
 //    tbm podemos usar o EntityManager para persistir os dados na base
 //    @PersistenceContext
@@ -23,7 +23,7 @@ public class NovoAutor {
     private AuthorService service;
 
     @Autowired
-    public NovoAutor(AuthorService service) {
+    public AuthorController(AuthorService service) {
         this.service = service;
     }
 

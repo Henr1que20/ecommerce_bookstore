@@ -1,17 +1,21 @@
 package com.vendadelivro.estudo.service.impl;
 
 import com.vendadelivro.estudo.dto.BookDTO;
+import com.vendadelivro.estudo.dto.response.AuthorResponseDTO;
+import com.vendadelivro.estudo.dto.response.BookDetailDTO;
 import com.vendadelivro.estudo.dto.response.BookResponseDTO;
 import com.vendadelivro.estudo.model.Book;
 import com.vendadelivro.estudo.repo.BookRepository;
 import com.vendadelivro.estudo.service.AuthorService;
 import com.vendadelivro.estudo.service.BookService;
 import com.vendadelivro.estudo.service.CategoryService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,7 +46,22 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookResponseDTO> findAllBooks() {
         var books = bookRepository.findAll();
-        List<BookResponseDTO> bookResponseDTOS = books.stream().map(book -> new BookResponseDTO(book.getId(), book.getTitulo())).collect(Collectors.toList());
+        List<BookResponseDTO> bookResponseDTOS = books.stream().map(book -> new BookResponseDTO(book.getId(),
+                book.getTitulo())).collect(Collectors.toList());
         return bookResponseDTOS;
+    }
+
+    @Override
+    public BookDetailDTO findBookDetail(Long id) {
+        Optional<Book> book = Optional.ofNullable(bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("id Not Found")));
+        var author = authorService.findAuthorById(book.get().getAuthor().getId());
+
+        AuthorResponseDTO authorDTO = new AuthorResponseDTO(author.getNome(), author.getDescricao());
+
+        return new BookDetailDTO(book.get().getTitulo(), book.get().getPreco(), book.get().getResumo(),
+                book.get().getSumario(), book.get().getNumPagina(), book.get().getIsbn(),
+                book.get().getDatPublication(), authorDTO);
+
     }
 }

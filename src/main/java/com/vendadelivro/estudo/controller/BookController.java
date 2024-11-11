@@ -1,6 +1,7 @@
 package com.vendadelivro.estudo.controller;
 
 import com.vendadelivro.estudo.dto.BookDTO;
+import com.vendadelivro.estudo.dto.response.BookDetailDTO;
 import com.vendadelivro.estudo.dto.response.BookResponseDTO;
 import com.vendadelivro.estudo.model.Book;
 import com.vendadelivro.estudo.service.BookService;
@@ -12,25 +13,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/livros")
-public class NovoLivro {
+@RequestMapping("/books")
+public class BookController {
 
-    private BookService livroService;
+    private BookService bookService;
 
     @Autowired
-    public NovoLivro(BookService livroService) {
-        this.livroService = livroService;
+    public BookController(BookService livroService) {
+        this.bookService = livroService;
     }
 
     @PostMapping
     public ResponseEntity<Book> registerNewBook(@RequestBody @Valid BookDTO dto){
-        var livro = livroService.registerNewBook(dto);
+        var livro = bookService.registerNewBook(dto);
         return ResponseEntity.ok().body(livro);
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/list")
     public ResponseEntity<List<BookResponseDTO>> listAllBooks(){
-        var books = livroService.findAllBooks();
+        var books = bookService.findAllBooks();
+        return ResponseEntity.ok().body(books);
+    }
+
+    @GetMapping("/list/{id}")
+    public ResponseEntity<BookDetailDTO> bookDetail(@PathVariable Long id){
+        var books = bookService.findBookDetail(id);
         return ResponseEntity.ok().body(books);
     }
 }
