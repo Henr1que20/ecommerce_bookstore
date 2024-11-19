@@ -1,7 +1,5 @@
 package com.vendadelivro.estudo.model;
 
-import com.vendadelivro.estudo.dto.NovaCategoriaDTO;
-import com.vendadelivro.estudo.dto.NovoAutorDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.vendadelivro.estudo.controller;
 
-import com.vendadelivro.estudo.dto.BookDTO;
+import com.vendadelivro.estudo.dto.request.BookDTO;
 import com.vendadelivro.estudo.dto.response.BookDetailDTO;
 import com.vendadelivro.estudo.dto.response.BookResponseDTO;
 import com.vendadelivro.estudo.model.Book;

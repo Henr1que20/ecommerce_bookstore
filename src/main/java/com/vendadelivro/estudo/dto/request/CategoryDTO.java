@@ -1,16 +1,16 @@
-package com.vendadelivro.estudo.dto;
+package com.vendadelivro.estudo.dto.request;
 
 import com.vendadelivro.estudo.model.Category;
 import com.vendadelivro.estudo.validator.UniqueValue;
 import jakarta.validation.constraints.NotBlank;
 
-public class NovaCategoriaDTO {
+public class CategoryDTO {
 
     @NotBlank
     @UniqueValue(domainClass = Category.class, fieldName = "nomeCategoria")
     private String nome;
 
-    public NovaCategoriaDTO() {
+    public CategoryDTO() {
     }
 
     public String getNome() {

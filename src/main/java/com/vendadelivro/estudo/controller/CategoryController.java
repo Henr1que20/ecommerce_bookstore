@@ -1,6 +1,6 @@
 package com.vendadelivro.estudo.controller;
 
-import com.vendadelivro.estudo.dto.NovaCategoriaDTO;
+import com.vendadelivro.estudo.dto.request.CategoryDTO;
 import com.vendadelivro.estudo.dto.response.CategoriaResponseDTO;
 import com.vendadelivro.estudo.exception.DuplicateFieldException;
 import com.vendadelivro.estudo.model.Category;
@@ -25,7 +25,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoriaResponseDTO> createNewCategory(@RequestBody @Valid final NovaCategoriaDTO categoriaDTO)
+    public ResponseEntity<CategoriaResponseDTO> createNewCategory(@RequestBody @Valid final CategoryDTO categoriaDTO)
             throws DuplicateFieldException {
         Category category = categoriaDTO.toModel();
         category = categoryService.createNewCategory(category);

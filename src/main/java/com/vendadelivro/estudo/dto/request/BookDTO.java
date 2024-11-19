@@ -1,4 +1,4 @@
-package com.vendadelivro.estudo.dto;
+package com.vendadelivro.estudo.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vendadelivro.estudo.model.Book;

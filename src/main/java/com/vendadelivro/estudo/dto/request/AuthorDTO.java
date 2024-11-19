@@ -1,4 +1,4 @@
-package com.vendadelivro.estudo.dto;
+package com.vendadelivro.estudo.dto.request;
 
 import com.vendadelivro.estudo.model.Author;
 import com.vendadelivro.estudo.validator.UniqueValue;
@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class NovoAutorDTO {
+public class AuthorDTO {
     @NotBlank
     private String nome;
     @Email
@@ -16,10 +16,10 @@ public class NovoAutorDTO {
     @Size(max = 400)
     private String descricao;
 
-    public NovoAutorDTO() {
+    public AuthorDTO() {
     }
 
-    public NovoAutorDTO(String nome, String email, String descricao) {
+    public AuthorDTO(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
